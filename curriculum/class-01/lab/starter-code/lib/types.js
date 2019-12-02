@@ -13,7 +13,6 @@ const castToString = val => {
   if(isString(val)) return val;
   const stringifiedValue = String(`${val}`);
   if(isNumber(val) && val % 1 != 0 && !isNaN(val)){
-
     const newString = stringifiedValue.slice(1);
     return newString;
   }
