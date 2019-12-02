@@ -3,6 +3,7 @@ const {
   isString,
   isBoolean,
   isObject,
+  isFunction,
   castToNumber,
   castToString,
   castToBoolean,
@@ -68,6 +69,17 @@ describe('validator module', () => {
       expect(isObject(true)).toBeFalsy();
       expect(isObject('')).toBeFalsy();
       expect(isObject(5)).toBeFalsy();
+    });
+
+    it('tells if an input is a function', () => {
+      expect(isFunction(isObject)).toBeTruthy();
+      expect(isFunction(() => 4)).toBeTruthy();
+      expect(isFunction((() => isObject(4)))).toBeTruthy();
+      expect(isFunction((() => {
+        !isNumber(4);
+      }))).toBeTruthy();
+
+      expect(isFunction(4)).toBeFalsy();
     });
 
   });

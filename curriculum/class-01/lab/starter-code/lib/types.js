@@ -35,6 +35,12 @@ const isObject = val => {
   return stringedVal === '[object Object]';
 };
 
+const isFunction = val => {
+  if(!isNumber(val) && !isString(val) && !isBoolean(val) && !isObject(val)) {
+    return !!val;
+  }
+};
+
 class CastError extends Error {
   constructor(Type, value) {
     const type = Type.name;
@@ -58,6 +64,7 @@ module.exports = {
   isString,
   isBoolean,
   isObject,
+  isFunction,
   CastError,
   getCaster,
   castToNumber,
