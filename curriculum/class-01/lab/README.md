@@ -47,6 +47,10 @@ validation module.
 
 ### getCaster
 
+```js
+getCaster(String) // return castToString
+```
+
 * add your casters to `getCaster`
 
 ### Testing

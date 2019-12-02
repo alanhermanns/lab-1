@@ -2,23 +2,13 @@
 
 ## Agenda
 
-* format
 * reminders
+* format
 * node
 * npm
 * jest
 * review
 * array methods
-
-## Format
-
-* class time from 9am - 12pm
-  * lecture and work on small solo exercises
-  * create a repo for each class day
-  * complete exercises in new branches
-* Lab time from 1pm - 6pm
-  * independent/pair/mob work on larger lab
-  * create a new repo for each lab
 
 ## Reminders
 
@@ -30,6 +20,16 @@
   * playing an instrument
   * rock climbing
   * etc.
+
+## Format
+
+* class time from 9am - 12pm
+  * lecture and work on small solo exercises
+  * create a repo for each class day
+  * complete exercises in new branches
+* Lab time from 1pm - 6pm
+  * independent/pair/mob work on larger lab
+  * create a new repo for each lab
 
 ## Labs
 
@@ -72,6 +72,12 @@ npm i -D jest eslint
 
 ## jest
 
+* dependencies
+
+```sh
+npm i -D jest @types/jest
+```
+
 We'll be using jest to run our tests.
 
 ```js
@@ -104,7 +110,7 @@ describe('My test suite', () => {
 
 * null
 * undefined
-* number
+* number (includes NaN)
 * string
 * boolean
 * bigint
@@ -118,7 +124,6 @@ describe('My test suite', () => {
 * logical
 * ternary
 * delete
-* in
 
 ### Statements
 
@@ -236,6 +241,12 @@ console.log(dogName, color); // prints rover red
 const dog = { name: 'rover', age: 5, weight: '20lbs', color: 'blue' };
 const { name, color = 'red' } = dog; //
 console.log(dogName, color); // prints rover blue
+```
+
+```js
+const dog = { name: 'rover', age: 5, weight: '20lbs' };
+const { name, age: myAge } = dog; //
+console.log(dogName, myAge); // prints rover 5
 ```
 
 ```js
