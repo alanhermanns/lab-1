@@ -1,6 +1,7 @@
 const {
   isNumber,
   isString,
+  isBoolean,
   castToNumber,
   castToString,
   getCaster
@@ -37,6 +38,21 @@ describe('validator module', () => {
       expect(isString(['yes', 'maybe'])).toBeFalsy();
       expect(isString([])).toBeFalsy();
     });
+
+    it('tells if a value is a boolean', () => {
+      expect(isBoolean(true)).toBeTruthy();
+      expect(isBoolean(false)).toBeTruthy();
+
+      expect(isBoolean(1)).toBeFalsy();
+      expect(isBoolean('hi')).toBeFalsy();
+      expect(isBoolean(null)).toBeFalsy();
+      expect(isBoolean(undefined)).toBeFalsy();
+      expect(isBoolean({ 'false': false })).toBeFalsy();
+      expect(isBoolean({ 'true': true })).toBeFalsy();
+      expect(isBoolean([true])).toBeFalsy();
+    }); 
+    expect(isBoolean([])).toBeFalsy();
+    expect(isBoolean({})).toBeFalsy();
   });
 
   describe('casters', () => {
