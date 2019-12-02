@@ -46,26 +46,27 @@ describe('validator module', () => {
       expect(castToNumber(true)).toEqual(1);
       expect(castToNumber(false)).toEqual(0);
     });
-
+    
     it('throws if value is not castable to number', () => {
       expect(() => castToNumber('hi')).toThrowErrorMatchingSnapshot();
       expect(() => castToNumber({})).toThrowErrorMatchingSnapshot();
     });
+    
+    it('casts value to a string', () => {
+      expect(castToString('yes')).toEqual('yes');
+      expect(castToString(4)).toEqual('4');
+      expect(castToString(true)).toEqual('true');
+      expect(castToString(false)).toEqual('false');
+      expect(castToString(.545)).toEqual('.545');
+      expect(castToString(null)).toEqual('null');
+      expect(castToString('undefined')).toEqual('undefined');
+      expect(castToString(NaN)).toEqual('NaN');
+    });
   });
-
+  
   it('can get the right caster', () => {
     expect(getCaster(Number)).toEqual(castToNumber);
     expect(getCaster(Promise)).toBeNull();
   });
 
-  it('casts value to a string', () => {
-    expect(castToString('yes').toEqual('yes'));
-    expect(castToString(4).toEqual('4'));
-    expect(castToString(true).toEqual('true'));
-    expect(castToString(false).toEqual('false'));
-    expect(castToString(.545).toEqual('.545'));
-    expect(castToString(null).toEqual('null'));
-    expect(castToString('undefined').toEqual('undefined'));
-    expect(castToString(NaN).toEqual('NaN'));
-  });
 });

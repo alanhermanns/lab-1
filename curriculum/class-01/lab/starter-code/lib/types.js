@@ -11,8 +11,15 @@ const isString = val => typeof val === 'string';
 
 const castToString = val => {
   if(isString(val)) return val;
-  const string = String(val);
-  return string;
+  const stringifiedValue = String(`${val}`);
+  if(isNumber(val) && val % 1 != 0 && !isNaN(val)){
+    console.log(stringifiedValue);
+    const newString = stringifiedValue.slice(1);
+    console.log(typeof(newString));
+    return newString;
+  }
+
+  return stringifiedValue;
 };
 
 class CastError extends Error {
@@ -26,6 +33,7 @@ class CastError extends Error {
 
 const casters = {
   Number: castToNumber,
+  String: castToString,
 };
 
 const getCaster = Type => {  
