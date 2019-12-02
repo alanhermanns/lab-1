@@ -7,6 +7,8 @@ const castToNumber = val => {
   return number;
 };
 
+const isString = val => typeof val === 'string';
+
 class CastError extends Error {
   constructor(Type, value) {
     const type = Type.name;
@@ -26,6 +28,7 @@ const getCaster = Type => {
 
 module.exports = {
   isNumber,
+  isString,
   CastError,
   getCaster,
   castToNumber,
