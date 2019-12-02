@@ -23,8 +23,11 @@ const castToString = val => {
 const isBoolean = val => typeof val === 'boolean';
 
 const castToBoolean = val => {
-  const boolean = Boolean(val);
-  return boolean;
+  const newBoolean = Boolean(val);
+  if(typeof(newBoolean) !== 'boolean'){
+    throw new CastError(Boolean, val);
+  }
+  return newBoolean;
 };
 
 class CastError extends Error {

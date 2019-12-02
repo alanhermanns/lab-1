@@ -79,16 +79,16 @@ describe('validator module', () => {
       expect(castToString('undefined')).toEqual('undefined');
       expect(castToString(NaN)).toEqual('NaN');
     });
-
+    
     it('casts a value to a boolean', () => {
       expect(castToBoolean(true)).toEqual(true);
       expect(castToBoolean(false)).toEqual(false);
       expect(castToBoolean(1)).toEqual(true);
       expect(castToBoolean(0)).toEqual(false);
-      expect(castToBoolean(NaN)).toEqual(true);
-      expect(castToBoolean(!!1)).toEqual(true);
+      expect(castToBoolean(NaN)).toEqual(false);
       expect(castToBoolean(!1)).toEqual(false);
     });
+    
   });
   
   it('can get the right caster', () => {
