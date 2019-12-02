@@ -13,9 +13,8 @@ const castToString = val => {
   if(isString(val)) return val;
   const stringifiedValue = String(`${val}`);
   if(isNumber(val) && val % 1 != 0 && !isNaN(val)){
-    console.log(stringifiedValue);
+
     const newString = stringifiedValue.slice(1);
-    console.log(typeof(newString));
     return newString;
   }
   return stringifiedValue;
