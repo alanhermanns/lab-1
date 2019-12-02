@@ -22,6 +22,11 @@ const castToString = val => {
 
 const isBoolean = val => typeof val === 'boolean';
 
+const castToBoolean = val => {
+  const boolean = Boolean(val);
+  return boolean;
+};
+
 class CastError extends Error {
   constructor(Type, value) {
     const type = Type.name;
@@ -48,4 +53,5 @@ module.exports = {
   getCaster,
   castToNumber,
   castToString,
+  castToBoolean
 };

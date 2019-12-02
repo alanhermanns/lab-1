@@ -4,6 +4,7 @@ const {
   isBoolean,
   castToNumber,
   castToString,
+  castToBoolean,
   getCaster
 } = require('../lib/types.js');
 
@@ -77,6 +78,16 @@ describe('validator module', () => {
       expect(castToString(null)).toEqual('null');
       expect(castToString('undefined')).toEqual('undefined');
       expect(castToString(NaN)).toEqual('NaN');
+    });
+
+    it('casts a value to a boolean', () => {
+      expect(castToBoolean(true)).toEqual(true);
+      expect(castToBoolean(false)).toEqual(false);
+      expect(castToBoolean(1)).toEqual(true);
+      expect(castToBoolean(0)).toEqual(false);
+      expect(castToBoolean(NaN)).toEqual(true);
+      expect(castToBoolean(!!1)).toEqual(true);
+      expect(castToBoolean(!1)).toEqual(false);
     });
   });
   
