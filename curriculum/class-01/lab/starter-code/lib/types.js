@@ -30,6 +30,11 @@ const castToBoolean = val => {
   return newBoolean;
 };
 
+const isObject = val => {
+  const stringedVal = castToString(val);
+  return stringedVal === '[object Object]';
+};
+
 class CastError extends Error {
   constructor(Type, value) {
     const type = Type.name;
@@ -52,6 +57,7 @@ module.exports = {
   isNumber,
   isString,
   isBoolean,
+  isObject,
   CastError,
   getCaster,
   castToNumber,

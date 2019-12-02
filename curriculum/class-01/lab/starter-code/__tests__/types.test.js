@@ -2,6 +2,7 @@ const {
   isNumber,
   isString,
   isBoolean,
+  isObject,
   castToNumber,
   castToString,
   castToBoolean,
@@ -51,9 +52,24 @@ describe('validator module', () => {
       expect(isBoolean({ 'false': false })).toBeFalsy();
       expect(isBoolean({ 'true': true })).toBeFalsy();
       expect(isBoolean([true])).toBeFalsy();
+      expect(isBoolean([])).toBeFalsy();
+      expect(isBoolean({})).toBeFalsy();
     }); 
-    expect(isBoolean([])).toBeFalsy();
-    expect(isBoolean({})).toBeFalsy();
+
+    it('tells if input is an object', () => {
+      expect(isObject({})).toBeTruthy();
+      expect(isObject({ 
+        'dog' : 1,
+        'cat' : 4,
+        'mouse' : null
+      })).toBeTruthy();
+
+      expect(isObject(false)).toBeFalsy();
+      expect(isObject(true)).toBeFalsy();
+      expect(isObject('')).toBeFalsy();
+      expect(isObject(5)).toBeFalsy();
+    });
+
   });
 
   describe('casters', () => {
@@ -78,6 +94,8 @@ describe('validator module', () => {
       expect(castToString(null)).toEqual('null');
       expect(castToString('undefined')).toEqual('undefined');
       expect(castToString(NaN)).toEqual('NaN');
+      expect(castToString({})).toEqual('[object Object]');
+
     });
     
     it('casts a value to a boolean', () => {
