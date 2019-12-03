@@ -9,7 +9,7 @@ const { getCaster,
   isArray,
   isFunction } = require('../lib/types');
 
-const { Validator } = require('../lib/validator')
+const { Validator } = require('../lib/validator');
 
 
 const cat = {
