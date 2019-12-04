@@ -32,6 +32,8 @@ const newNameValidator = new Validator('name', {
   type : Number,
   required : true
 });
+const emptyValidator = new Validator('name', {
+});
 
 describe('validate method on Validator class', () => {
   it('properly validates an object', () => {
@@ -42,6 +44,7 @@ describe('validate method on Validator class', () => {
     expect(() => lightOrHeavyValidator.validate(cat)).toThrowErrorMatchingSnapshot(); 
     expect(() => newAgeValidator.validate(cat)).toThrowErrorMatchingSnapshot();
     expect(() => newNameValidator.validate(cat)).toThrowErrorMatchingSnapshot();
+    expect(() => emptyValidator.validate(cat)).toThrowErrorMatchingSnapshot();
     
   });
 });

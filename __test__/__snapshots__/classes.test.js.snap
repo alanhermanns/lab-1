@@ -7,3 +7,5 @@ exports[`validate method on Validator class properly validates an object 1`] = `
 exports[`validate method on Validator class properly validates an object 2`] = `"No required paramater in the construction"`;
 
 exports[`validate method on Validator class properly validates an object 3`] = `"Cannot cast >>Sugar<< to Number"`;
+
+exports[`validate method on Validator class properly validates an object 4`] = `"No required paramater in the construction"`;
