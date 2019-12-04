@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[` 1`] = `"Schema errors : Error: No state in the object"`;
+
 exports[`validate method on Validator class properly validates an object 1`] = `"No heavy in the object"`;
 
 exports[`validate method on Validator class properly validates an object 2`] = `"No required paramater in the construction"`;
