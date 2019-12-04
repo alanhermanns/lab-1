@@ -1,6 +1,7 @@
 const { 
   mkdirp,
-  writeJSON
+  writeJSON,
+  readJSON
 } = require('../lib/utilityFileFunctions');
 
 const fs = require('fs').promises;
@@ -12,7 +13,8 @@ const data = { 'equals' : 'equals' };
 jest.mock('fs', () => ({
   promises : {
     mkdir: jest.fn(() => Promise.resolve()),
-    writeFile: jest.fn(() => Promise.resolve())
+    writeFile: jest.fn(() => Promise.resolve()),
+    readFile: jest.fn(() => Promise.resolve())
 
   }
 }));
@@ -32,5 +34,16 @@ describe('write JSON to a file', () => {
   it('validates JSON', () => {
     return writeJSON(mockFilePath, data).then(() => 
       expect((writeJSON)).toThrowErrorMatchingSnapshot());
+  });
+});
+
+describe('read JSON in a file', () => {
+  it('properly creates a path to a file', () => {
+    return readJSON(mockFilePath).then(() =>
+      expect(fs.readFile).toHaveBeenLastCalledWith(mockFilePath));
+  });
+  it('checks to see if path is valid', () => {
+    return readJSON(mockFilePath).then(() => 
+      expect((readJSON)).toThrowErrorMatchingSnapshot());
   });
 });
