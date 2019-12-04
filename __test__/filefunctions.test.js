@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 
 const mockPath = 'Directory Created';
 const mockFilePath = 'File Created';
-const data = { 'this' : 'this' };
+const data = { 'equals' : 'equals' };
 
 jest.mock('fs', () => ({
   promises : {
@@ -29,8 +29,8 @@ describe('write JSON to a file', () => {
     return writeJSON(mockFilePath, data).then(() =>
       expect(fs.writeFile).toHaveBeenLastCalledWith(mockFilePath, data));
   });
-  it('verifies that data passed to writeJSON is valid json', () => {
-    return writeJSON(mockFilePath, data).then(() =>
-      expect(fs.writeFile).toThrowErrorMatchingSnapshot());
+  it('validates JSON', () => {
+    return writeJSON(mockFilePath, data).then(() => 
+      expect((writeJSON)).toThrowErrorMatchingSnapshot());
   });
 });

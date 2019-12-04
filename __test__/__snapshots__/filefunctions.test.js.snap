@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`write JSON to a file validates JSON 1`] = `"No data specified"`;
