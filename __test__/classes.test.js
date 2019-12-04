@@ -47,10 +47,6 @@ describe('validate method on Validator class', () => {
 });
 
 const uncle = new Schema({
-  uncle : {
-    type : String,
-    required : true
-  },
   age : {
     type : Number,
     required : true
@@ -71,8 +67,15 @@ const fred = {
   name : 'fred'
 };
 
+const matt = {
+  age : 40,
+  state : true,
+  profession : 'film-maker'
+}
+
 describe('validate method on Schema class', () => {
   it('properly validates an object has all the properties necessary to its fields', () => {
-    expect(uncle.validate(fred)).toBeTruthy();
+    expect(uncle.validate(fred)).toEqual({ age: 50, state: true, name : 'fred' });
   });
+  expect(() => uncle.validate(matt)).toThrowError();
 });
