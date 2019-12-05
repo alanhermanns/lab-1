@@ -2,7 +2,8 @@ const {
   mkdirp,
   writeJSON,
   readJSON,
-  readDirectoryJSON
+  readDirectoryJSON,
+  updateJSON
 } = require('../lib/utilityFileFunctions');
 
 const fs = require('fs').promises;
@@ -17,7 +18,9 @@ jest.mock('fs', () => ({
     mkdir: jest.fn(() => Promise.resolve()),
     writeFile: jest.fn(() => Promise.resolve()),
     readFile: jest.fn(() => Promise.resolve()),
-    readdir: jest.fn(() => Promise.resolve(['b', 'c', 'd']))
+    readdir: jest.fn(() => Promise.resolve(['b', 'c', 'd'])),
+    updateJSON: jest.fn(() => Promise.resolve({ 'equals' : 'equals' }))
+
   }
 }));
 
@@ -58,4 +61,14 @@ describe('get files in a directory and then read them', () => {
     return readDirectoryJSON().then(() => () =>
       expect(readDirectoryJSON).toThrowErrorMatchingSnapshot());
   });
+});
+describe('update JSON in file', () => {
+  it('updates properties', () => {
+    return updateJSON(mockFilePath, data).then(() =>
+      expect(readJSON).toHaveBeenLastCalledWith(mockFilePath));
+  });
+//   it('checks to see if path or data is missing', () => {
+//     return updateJSON().then(() => () =>
+//       expect(updateJSON).toThrowErrorMatchingSnapshot());
+//   });
 });
